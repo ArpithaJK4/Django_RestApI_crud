@@ -1,0 +1,45 @@
+/* Center the form */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Full screen height */
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+/* Register Container (Smaller & Centered) */
+.register-container {
+    width: 300px;  /* Compact form */
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Reduce Input Field Size */
+.register-container input {
+    width: 90%;
+    padding: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Adjust Button */
+.register-container button {
+    width: 100px;  /* Smaller button */
+    padding: 8px;
+    font-size: 14px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-container button:hover {
+    background: #0056b3;
+}

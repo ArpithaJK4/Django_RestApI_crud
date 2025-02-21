@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+{% block content %}
+<div class="container">
+    <nav class="navbar">
+        {% if request.user.is_authenticated %}
+            <p class="username">Welcome, {{ request.user.username }}</p>
+            <a class="btn logout" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a class="btn login" href="{% url 'login' %}">Login</a><br><br>
+            <a class="btn register" href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </nav>
+
+    <div class="hero">
+        <h1>Welcome to My Website</h1>
+    </div>
+</div>
+{% endblock %}
+
+</body>
+</html>
