@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -23,6 +25,7 @@ class CustomerManager(BaseUserManager):
         return user
 
 class Customer(AbstractBaseUser):
+
     customer_id = models.BigAutoField(primary_key=True)
     customer_name = models.CharField(max_length=255)
     customer_phone = models.CharField(max_length=20, unique=True)
@@ -32,6 +35,8 @@ class Customer(AbstractBaseUser):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     token = models.CharField(max_length=255, null=True, blank=True)
+
+
 
     USERNAME_FIELD = 'customer_email'
     REQUIRED_FIELDS = ['customer_name', 'customer_phone']
@@ -49,4 +54,8 @@ class Customer(AbstractBaseUser):
         refresh = RefreshToken.for_user(self)
         self.token = str(refresh.access_token)
         self.save(update_fields=["token"])
-        return self.token
+
+        return {
+            "refresh": str(refresh),
+            "access": str(refresh.access_token)
+        }
