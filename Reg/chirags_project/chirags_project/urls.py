@@ -4,6 +4,7 @@ import accounts.views as views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
     path('api/', include('accounts.urls')),  # Add this
     path('', views.user_home, name='home'),
 ]
